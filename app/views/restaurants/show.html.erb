@@ -1,0 +1,23 @@
+<h1><%= @restaurant.name %></h1>
+<p>Category: <%= @restaurant.category %></p>
+<p>Address: <%= @restaurant.address %></p>
+<p>Phone number: <%= @restaurant.phone_number %></p>
+
+<h3>Reviews</h3>
+<div class="text-right">
+  <%= link_to "New Review", new_restaurant_review_path(@restaurant), class:"btn btn-link btn-xs" %>
+</div>
+<% @reviews.each do |review| %>
+  <div class="bg-success" style="padding: 10px 20px; margin: 5px 0">
+    <p>
+      <% review.rating.times do %>
+        <i class="fa fa-star text-warning" aria-hidden="true"></i>
+      <% end %>
+      <% (5 - review.rating).times do %>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      <% end %>
+    </p>
+    <p><%= review.content %></p>
+  </div>
+<% end %>
+
